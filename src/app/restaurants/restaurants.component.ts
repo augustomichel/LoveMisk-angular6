@@ -1,14 +1,12 @@
+
+import {from as observableFrom,  Observable } from 'rxjs';
+
+import {catchError, switchMap, distinctUntilChanged, debounceTime} from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { RestaurantsService } from './restaurants.service';
 import { Restaurant } from './restaurant/restaurant.model';
 import { animate, state, style, transition, trigger, keyframes } from '@angular/animations';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import 'rxjs/add/operator/switchMap'
-import 'rxjs/add/operator/debounceTime'
-import 'rxjs/add/operator/distinctUntilChanged'
-import 'rxjs/add/operator/catch'
-import 'rxjs/add/observable/from'
-import { Observable } from 'rxjs/Observable';
 
 
 @Component({
@@ -49,12 +47,12 @@ export class RestaurantsComponent implements OnInit {
       searchControl: this.searchControl
     })
 
-    this.searchControl.valueChanges
-      .debounceTime(500)
-      .distinctUntilChanged()
-      .switchMap(searchTerm => 
-        this.RestaurantsService.restaurants(searchTerm)
-        .catch(error=>Observable.from([])))
+    this.searchControl.valueChanges.pipe(
+      debounceTime(500),
+      distinctUntilChanged(),
+      switchMap(searchTerm => 
+        this.RestaurantsService.restaurants(searchTerm).pipe(
+        catchError(error=>observableFrom([])))),)
       .subscribe(restaurants => this.restaurants = restaurants)
 
     this.RestaurantsService.restaurants()
