@@ -1,8 +1,5 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "cli": {
-    "analytics": "e7b34101-a81f-4bd2-ba50-7a1941d10121"
-  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -24,39 +21,34 @@
               "src/favicon.ico"
             ],
             "styles": [
-              "node_modules/font-awesome/css/font-awesome.min.css",
-              "node_modules/admin-lte/bootstrap/css/bootstrap.min.css",
-              "node_modules/admin-lte/dist/css/AdminLTE.min.css",
-              "node_modules/admin-lte/dist/css/skins/skin-red.min.css",
-              "node_modules/admin-lte/plugins/iCheck/flat/red.css",
-              "src/styles.css"
+              {"input":"node_modules/font-awesome/css/font-awesome.min.css"},
+              {"input":"node_modules/admin-lte/bootstrap/css/bootstrap.min.css"},
+              {"input":"node_modules/admin-lte/dist/css/AdminLTE.min.css"},
+              {"input":"node_modules/admin-lte/dist/css/skins/skin-red.min.css"},
+              {"input":"node_modules/admin-lte/plugins/iCheck/flat/red.css"},
+              {"input":"src/styles.css"}
             ],
             "scripts": [
-              "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/admin-lte/bootstrap/js/bootstrap.min.js",
-              "node_modules/admin-lte/dist/js/app.min.js"
-            ],
-            "aot": true
+              {"input":"node_modules/jquery/dist/jquery.min.js"},
+              {"input":"node_modules/admin-lte/bootstrap/js/bootstrap.min.js"},
+              {"input":"node_modules/admin-lte/dist/js/app.min.js"}
+            ]
           },
           "configurations": {
             "production": {
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
+              "extractCss": true,
               "namedChunks": false,
+              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ],
-              "budgets": [
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb"
+                  "src": "src/environments/environment.ts",
+                  "replaceWith": "src/environments/environment.prod.ts"
                 }
               ]
             }
@@ -86,18 +78,18 @@
             "karmaConfig": "./karma.conf.js",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
-            "scripts": [
-              "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/admin-lte/bootstrap/js/bootstrap.min.js",
-              "node_modules/admin-lte/dist/js/app.min.js"
-            ],
             "styles": [
-              "node_modules/font-awesome/css/font-awesome.min.css",
-              "node_modules/admin-lte/bootstrap/css/bootstrap.min.css",
-              "node_modules/admin-lte/dist/css/AdminLTE.min.css",
-              "node_modules/admin-lte/dist/css/skins/skin-red.min.css",
-              "node_modules/admin-lte/plugins/iCheck/flat/red.css",
-              "src/styles.css"
+              {"input":"node_modules/font-awesome/css/font-awesome.min.css"},
+              {"input":"node_modules/admin-lte/bootstrap/css/bootstrap.min.css"},
+              {"input":"node_modules/admin-lte/dist/css/AdminLTE.min.css"},
+              {"input":"node_modules/admin-lte/dist/css/skins/skin-red.min.css"},
+              {"input":"node_modules/admin-lte/plugins/iCheck/flat/red.css"},
+              {"input":"src/styles.css"}
+            ],
+            "scripts": [
+              {"input":"node_modules/jquery/dist/jquery.min.js"},
+              {"input":"node_modules/admin-lte/bootstrap/js/bootstrap.min.js"},
+              {"input":"node_modules/admin-lte/dist/js/app.min.js"}
             ],
             "assets": [
               "src/assets",
@@ -118,8 +110,8 @@
       }
     },
     "lovemisk-e2e": {
-      "root": "e2e",
-      "sourceRoot": "e2e",
+      "root": "",
+      "sourceRoot": "",
       "projectType": "application",
       "architect": {
         "e2e": {
@@ -145,7 +137,7 @@
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "lm",
-      "style": "css"
+      "styleext": "css"
     },
     "@schematics/angular:directive": {
       "prefix": "lm"
