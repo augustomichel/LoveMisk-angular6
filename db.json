@@ -425,6 +425,22 @@
         }
       ],
       "id": 4
+    },
+    {
+      "name": "Augusto",
+      "email": "augustomichel@gmail.com",
+      "emailConfirmation": "augustomichel@gmail.com",
+      "address": "R. Pedro Cunha",
+      "number": "2",
+      "optionalAddress": "",
+      "paymentOption": "MON",
+      "OrderItems": [
+        {
+          "quantity": 2,
+          "menuId": "cup-cake"
+        }
+      ],
+      "id": 5
     }
   ]
 }

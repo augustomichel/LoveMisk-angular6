@@ -1,6 +1,6 @@
 import {  Injectable } from "@angular/core";
 import { Observable } from "rxjs/Observable";
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 
 import { CartItem } from "../restaurant-detail/shopping-cart/cart-item.model";
@@ -9,11 +9,13 @@ import { Order, OrderItem } from "./order.model";
 import { LOVEMISK_API } from "app/app.api";
 
 
+
 @Injectable()
 
 export class OrderService {
 
-    constructor(private cartService: ShoppingCartService, private http: HttpClient) {}
+    constructor(private cartService: ShoppingCartService, 
+                private http: HttpClient) {}
 
 
     itemsValue():number{

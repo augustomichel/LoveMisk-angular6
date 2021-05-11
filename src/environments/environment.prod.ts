@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  api: 'http://192.168.0.2:3000'
+  api: 'https://ng-meat.herokuapp.com'
 };
